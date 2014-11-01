@@ -10,16 +10,20 @@
     <script src="./Scripts/bootstrap.min.js"></script>   
     <link href="./Content/bootstrap.min.css" rel="stylesheet">
     <link href="./home.css" rel="stylesheet" >
+    <script src="./functions.js"></script>
 </head > 
 <body>
     <div class="container-fluid">
         <h1>Shh...note</h1>
-         <form role="form" method="post" style="width:50%;margin-left:25%;margin-right:25%;">
-        <div class="form-group">
-            <b>Message</b>
-            <input type="text" class="form-control" name="message" value="" />
-        </div>
-        <button type="submit" class="btn btn-large">Send</button>
+        <form role="form" method="post" style="width:50%;margin-left:25%;margin-right:25%;">
+            <div class="form-group">
+                <b>Number</b>
+                <input type="text" id="number" class="form-control" name="number" value="" />
+                <b>Message</b>
+                <input type="text" id="message" class="form-control" name="message" value="" />
+            </div>
+            <button type="submit" class="btn btn-large">Send</button>
+        </form>
     </div>
 </body>
 </html>
