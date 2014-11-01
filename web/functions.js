@@ -12,9 +12,10 @@
 $(document).ready(function(){
     $.support.cors=true;
     $('form').submit(function(event){
-        var text = $('input').val();
-        $.post("http://shhnote.net78.net/send-message.php",{message: text}, function(data) {
-            $('h1').text(data);
+        var num = $('#number').val();
+        var text = $('#message').val();
+        $.post("http://shhnote.net78.net/send-message.php",{message: text, number: num}, function(data) {
+            $('button').text('Done');
         });
         event.preventDefault();
     });
