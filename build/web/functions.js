@@ -15,7 +15,7 @@ $(document).ready(function(){
         var num = $('#number').val();
         var text = $('#message').val();
         $.post("https://stark-ravine-3392.herokuapp.com/send-message",{message: text, number: num}, function(data) {
-            $('button').text(data);
+            $('button').text("Done");
         });
         event.preventDefault();
     });
