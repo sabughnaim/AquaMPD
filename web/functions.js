@@ -8,19 +8,14 @@
  * Created 10/31/2014 20:34
  * Author: Yaliang
  */
-/*
+
 $(document).ready(function(){
     $.support.cors=true;
     $('form').submit(function(event){
         var num = $('#number').val();
         var text = $('#message').val();
-<<<<<<< HEAD
-        $.post("./send.py",{message: text, number: num}, function(data) {
-            $('button').text('Done');
-=======
-        $.post("https://stark-ravine-3392.herokuapp.com/send-message",{message: text, number: num}, function(data) {
-            $('button').text(data);
->>>>>>> FETCH_HEAD
+        $.post("https://shhnote.herokuapp.com/send-message",{message: text, number: num}, function(data) {
+            $('button').text("Done");
         });
         event.preventDefault();
     });
@@ -28,4 +23,3 @@ $(document).ready(function(){
 
 
 
- */
