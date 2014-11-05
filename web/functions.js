@@ -14,8 +14,8 @@ $(document).ready(function(){
     $('form').submit(function(event){
         var num = $('#number').val();
         var text = $('#message').val();
-        $.post("http://shhnote.net78.net/send-message.php",{message: text, number: num}, function(data) {
-            $('button').text('Done');
+        $.post("https://stark-ravine-3392.herokuapp.com/send-message",{message: text, number: num}, function(data) {
+            $('button').text(data);
         });
         event.preventDefault();
     });
