@@ -5,6 +5,7 @@ License     This code is released under the MIT Open Source License. Feel free t
 Author      lostleon@gmail.com, http://www.lostleon.com/
 LastUpdate  05/28/2010
 */
+/*
 class GoogleVoice
 {
     public $username;

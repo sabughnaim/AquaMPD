@@ -1,4 +1,6 @@
+
 <?php
+/*
 	
 	require 'class.googlevoice.php';
 	if (isset($_POST['message']) and isset($_POST['number'])) {
@@ -11,3 +13,4 @@
 		echo 'Connected';
 	}
 ?>
+
