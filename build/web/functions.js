@@ -14,8 +14,13 @@ $(document).ready(function(){
     $('form').submit(function(event){
         var num = $('#number').val();
         var text = $('#message').val();
+<<<<<<< HEAD
         $.post("./send.py",{message: text, number: num}, function(data) {
             $('button').text('Done');
+=======
+        $.post("https://stark-ravine-3392.herokuapp.com/send-message",{message: text, number: num}, function(data) {
+            $('button').text(data);
+>>>>>>> FETCH_HEAD
         });
         event.preventDefault();
     });
