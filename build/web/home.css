@@ -11,7 +11,7 @@ and open the template in the editor.
 h1 {
     text-align: center;
     font-family: 'Indie Flower', cursive;
-    font-size: 80px;
+    font-size: 20vw;
 }
 b {
     font-family: 'Indie Flower', cursive;
@@ -20,7 +20,7 @@ b {
 
 .btn-sample { 
   color: black; 
-  background-color: white; 
+  background-color: transparent; 
   border-color: black; 
   font-weight: bold;
   font-family: 'Indie Flower', cursive;
@@ -32,11 +32,20 @@ b {
 .btn-sample.active, 
 .open .dropdown-toggle.btn-sample { 
   color: black; 
-  background-color: white; 
+  background-color: transparent; 
   border-color: black; 
   font-weight: 900;
   border-width: 3px;
 } 
+.container-fluid {
+    background-image: url(./notebook_back_2.jpg);
+    background-size: cover;
+}
+
+html{
+    background-image: url(./notebook_back_2.jpg);
+    background-size: cover;
+}
  
 
  
