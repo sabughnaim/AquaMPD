@@ -11,7 +11,7 @@ and open the template in the editor.
 h1 {
     text-align: center;
     font-family: 'Indie Flower', cursive;
-    font-size: 80px;
+    font-size: 20vw;
 }
 b {
     font-family: 'Indie Flower', cursive;
@@ -19,9 +19,10 @@ b {
 }
 
 .btn-sample { 
-  color: #ffffff; 
-  background-color: #0C868A; 
-  border-color: #FFFFFF; 
+  color: black; 
+  background-color: transparent; 
+  border-color: black; 
+  font-weight: bold;
   font-family: 'Indie Flower', cursive;
 } 
  
@@ -30,37 +31,21 @@ b {
 .btn-sample:active, 
 .btn-sample.active, 
 .open .dropdown-toggle.btn-sample { 
-  color: #ffffff; 
-  background-color: #0DC3DB; 
-  border-color: #FFFFFF; 
+  color: black; 
+  background-color: transparent; 
+  border-color: black; 
+  font-weight: 900;
+  border-width: 3px;
 } 
- 
-.btn-sample:active, 
-.btn-sample.active, 
-.open .dropdown-toggle.btn-sample { 
-  background-image: none; 
-} 
- 
-.btn-sample.disabled, 
-.btn-sample[disabled], 
-fieldset[disabled] .btn-sample, 
-.btn-sample.disabled:hover, 
-.btn-sample[disabled]:hover, 
-fieldset[disabled] .btn-sample:hover, 
-.btn-sample.disabled:focus, 
-.btn-sample[disabled]:focus, 
-fieldset[disabled] .btn-sample:focus, 
-.btn-sample.disabled:active, 
-.btn-sample[disabled]:active, 
-fieldset[disabled] .btn-sample:active, 
-.btn-sample.disabled.active, 
-.btn-sample[disabled].active, 
-fieldset[disabled] .btn-sample.active { 
-  background-color: #0C868A; 
-  border-color: #FFFFFF; 
-} 
- 
-.btn-sample .badge { 
-  color: #0C868A; 
-  background-color: #ffffff; 
+.container-fluid {
+    background-image: url(./notebook_back_2.jpg);
+    background-size: cover;
 }
+
+html{
+    background-image: url(./notebook_back_2.jpg);
+    background-size: cover;
+}
+ 
+
+ 
