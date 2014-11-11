@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Multi-page template</title>
+    <link rel="stylesheet" href="./Scripts/jquerymobile/demos/css/themes/default/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="./Scripts/jquerymobile/demos/_assets/css/jqm-demos.css">
+    <link rel="stylesheet" href="./indexV0.1.css">
+    <script src="./Scripts/jquerymobile/demos/js/jquery.js"></script>
+    <script src="./Scripts/jquerymobile/demos/_assets/js/index.js"></script>
+    <script src="./Scripts/jquerymobile/demos/js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="./functions.js"></script>
+</head>
+
+<body>
+
+<!-- Start of first page: #chat-page -->
+<div data-role="page" id="chat-page">
+
+    <div data-role="header">
+        <h1>Shh...note</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+        <h2>One</h2>
+
+        <p>I have an <code>id</code> of "one" on my page container. I'm first in the source order so I'm shown when the page loads.</p>
+
+        <p>This is a multi-page boilerplate template that you can copy to build your first jQuery Mobile page. This template contains multiple "page" containers inside, unlike a single page template that has just one page within it.</p>
+        <p>Just view the source and copy the code to get started. All the CSS and JS is linked to the jQuery CDN versions so this is super easy to set up. Remember to include a meta viewport tag in the head to set the zoom level.</p>
+        <p>You link to internal pages by referring to the <code>id</code> of the page you want to show. For example, to <a href="#two">link</a> to the page with an <code>id</code> of "two", my link would have a <code>href="#two"</code> in the code.</p>
+
+        <p><a href="#popup" class="ui-btn ui-shadow ui-corner-all" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p>
+    </div><!-- /content -->
+
+    <div data-role="footer" class="nav-glyphish-example" data-theme="b" data-position="fixed">
+        <div data-role="navbar" class="nav-glyphish-example" data-grid="b"><ul>
+            <li><a href="#chat-page" id="chat-nav-active" data-icon="custom">Chat</a></li><li><a href="#contact-page" id="contact-nav" data-icon="custom">Contact</a></li><li><a href="#popup" id="gear-nav" data-icon="custom">Setting</a></li>
+        </ul>
+        </div>
+    </div><!-- /footer -->
+</div><!-- /page chat-page -->
+
+<!-- Start of second page: #contact-page -->
+<div data-role="page" id="contact-page" data-theme="a">
+
+    <div data-role="header">
+        <h1>Two</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+        <h2>Two</h2>
+        <p>I have an id of "two" on my page container. I'm the second page container in this multi-page template.</p>
+        <p>Notice that the theme is different for this page because we've added a few <code>data-theme</code> swatch assigments here to show off how flexible it is. You can add any content or widget to these pages, but we're keeping these simple.</p>
+        <p><a href="#chat-page" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Back to page "one"</a></p>
+
+    </div><!-- /content -->
+
+    <div data-role="footer" class="nav-glyphish-example" data-theme="b" data-position="fixed">
+        <div data-role="navbar" class="nav-glyphish-example" data-grid="b"><ul>
+            <li><a href="#chat-page" id="chat-nav" data-icon="custom">Chat</a></li><li><a href="#contact-page" id="contact-nav-active" data-icon="custom">Contact</a></li><li><a href="#popup" id="gear-nav" data-icon="custom">Setting</a></li>
+        </ul>
+        </div>
+    </div><!-- /footer -->
+</div><!-- /page contact-page -->
+
+<!-- Start of third page: #login-page -->
+<div data-role="page" id="login-page" data-theme="a">
+
+    <div data-role="header">
+        <h1>Login</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+        <form>
+             <label for="phone">Your Phone Number:</label>
+             <input type="tel" data-clear-btn="true" name="phone" id="phone" value="">
+        </form>
+        <button class="ui-btn" onclick="send_verifyCode($('#phone').val().toString())">Send Verify Code</button>
+        <p>We will send a message to you with verify code.</p>
+    </div><!-- /content -->
+
+    <div data-role="footer" data-position="fixed"></div><!-- /footer -->
+</div><!-- /page login-page -->
+
+<!-- Start of third page: #verify-page -->
+<div data-role="page" id="verify-page" data-theme="a">
+
+    <div data-role="header">
+        <h1>Verify</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+        <form>
+             <label for="verifyCode">Your Phone Number:</label>
+             <input type="tel" data-clear-btn="true" name="verifyCode" id="verifyCode" value="">
+        </form>
+        <button class="ui-btn" onclick="check_verifyCode($('#phone').val().toString(),$('#verifyCode').val().toString())">Verify</button>
+        <p>A message with verify code has sent to you. Verify your phone number, access Shh...note, Enjoy!</p>
+    </div><!-- /content -->
+
+    <div data-role="footer" data-position="fixed"></div><!-- /footer -->
+</div><!-- /page login-page -->
+
+<!-- Start of fifth page: #popup -->
+<div data-role="page" id="popup">
+
+    <div data-role="header" data-theme="b">
+        <h1>Dialog</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+        <h2>Popup</h2>
+        <p>I have an id of "popup" on my page container and only look like a dialog because the link to me had a <code>data-rel="dialog"</code> attribute which gives me this inset look and a <code>data-transition="pop"</code> attribute to change the transition to pop. Without this, I'd be styled as a normal page.</p>
+        <p><a href="#one" data-rel="back" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left">Back to page "one"</a></p>
+    </div><!-- /content -->
+
+    <div data-role="footer">
+        <h4>Page Footer</h4>
+    </div><!-- /footer -->
+</div><!-- /page popup -->
+
+</body>
+</html>
