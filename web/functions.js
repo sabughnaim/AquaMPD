@@ -10,8 +10,8 @@
  */
 
 $(document).ready(function(){
-    if (localStorage["number"] == undefined) {
-        localStorage.removeItem("number");
+    if (localStorage["phone"] == undefined) {
+        localStorage.removeItem("phone");
         var t=setTimeout(function(){
             $( ":mobile-pagecontainer" ).pagecontainer( "change", "#login-page" );
         },10);
@@ -42,12 +42,23 @@ function check_user(num) {
 function send_verifyCode(num) {
     $.post("https://shhnote-dev.herokuapp.com/db/send-verifyCode",{number: num}, function(data) {
         console.log ( data );
+        if (data.toString().substr(0, 10).localeCompare('verifycode')) {
+            
+        } else {
+            $( ":mobile-pagecontainer" ).pagecontainer( "change", "#verify-page" );
+        }
     });
 }
 
 function check_verifyCode(num,code) {
     $.post("https://shhnote-dev.herokuapp.com/db/check-verifyCode",{number: num, verifycode: code}, function(data) {
-        console.log ( data );
+        console.log(data);
+        if (data.toString().substr(0, 4).localeCompare('true')) {
+            
+        } else {
+            $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
+            localStorage["phone"]=JSON.stringify(num);
+        }
     });
 }
 

@@ -76,29 +76,29 @@
     <div role="main" class="ui-content">
         <form>
              <label for="phone">Your Phone Number:</label>
-             <input type="text" data-clear-btn="true" name="phone" id="phone" value="">
+             <input type="tel" data-clear-btn="true" name="phone" id="phone" value="">
         </form>
-        <button class="ui-btn" onclick="send_verifyCode($('#phone').val())">Send Verify Code</button>
+        <button class="ui-btn" onclick="send_verifyCode($('#phone').val().toString())">Send Verify Code</button>
         <p>We will send a message to you with verify code.</p>
     </div><!-- /content -->
 
     <div data-role="footer" data-position="fixed"></div><!-- /footer -->
 </div><!-- /page login-page -->
 
-<!-- Start of third page: #login-page -->
-<div data-role="page" id="login-page" data-theme="a">
+<!-- Start of third page: #verify-page -->
+<div data-role="page" id="verify-page" data-theme="a">
 
     <div data-role="header">
-        <h1>Login</h1>
+        <h1>Verify</h1>
     </div><!-- /header -->
 
     <div role="main" class="ui-content">
         <form>
-             <label for="phone">Your Phone Number:</label>
-             <input type="text" data-clear-btn="true" name="phone" id="phone" value="">
+             <label for="verifyCode">Your Phone Number:</label>
+             <input type="tel" data-clear-btn="true" name="verifyCode" id="verifyCode" value="">
         </form>
-        <button class="ui-btn" onclick="send_verifyCode($('#phone').val())">Send Verify Code</button>
-        <p>We will send a message to you with verify code.</p>
+        <button class="ui-btn" onclick="check_verifyCode($('#phone').val().toString(),$('#verifyCode').val().toString())">Verify</button>
+        <p>A message with verify code has sent to you. Verify your phone number, access Shh...note, Enjoy!</p>
     </div><!-- /content -->
 
     <div data-role="footer" data-position="fixed"></div><!-- /footer -->
