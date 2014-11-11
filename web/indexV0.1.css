@@ -4,11 +4,35 @@
     background:url("./Scripts/jquerymobile/demos/_assets/img/glyphish-icons/09-chat2.png") 50% 50% no-repeat; 
     background-size: 24px 22px;
 }
+#chat-active{
+    background-color: #2ad;
+    border-color: #2ad;
+    color: #fff;
+    text-shadow: 0 1px 0 #08b;
+}
+#chat-active:after {
+    background:url("./Scripts/jquerymobile/demos/_assets/img/glyphish-icons/09-chat2.png") 50% 50% no-repeat; 
+    background-size: 24px 22px;
+}
 #email:after { 
     background:url("./Scripts/jquerymobile/demos/_assets/img/glyphish-icons/18-envelope.png") 50% 50% no-repeat; 
     background-size: 24px 16px;
 }
+#contact:after { 
+    background:url("./Content/icons/material-design/png/account4-white-24.png") 50% 50% no-repeat; 
+    background-size: 24px 24px;
+}
+#contact-active{
+    background-color: #2ad;
+    border-color: #2ad;
+    color: #fff;
+    text-shadow: 0 1px 0 #08b;
+}
+#contact-active:after { 
+    background:url("./Content/icons/material-design/png/account4-white-24.png") 50% 50% no-repeat; 
+    background-size: 24px 24px;
+}
 #gear:after { 
-    background:url("./Scripts/jquerymobile/demos/_assets/img/glyphish-icons/19-gear.png") 50% 50% no-repeat;
-    background-size: 22px 24px;
+    background:url("./Content/icons/material-design/png/settings49-white-24.png") 50% 50% no-repeat;
+    background-size: 24px 24px;
 }

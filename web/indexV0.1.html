@@ -31,20 +31,15 @@
         <p>Just view the source and copy the code to get started. All the CSS and JS is linked to the jQuery CDN versions so this is super easy to set up. Remember to include a meta viewport tag in the head to set the zoom level.</p>
         <p>You link to internal pages by referring to the <code>id</code> of the page you want to show. For example, to <a href="#two">link</a> to the page with an <code>id</code> of "two", my link would have a <code>href="#two"</code> in the code.</p>
 
-        <h3>Show internal pages:</h3>
-        <p><a href="#two" class="ui-btn ui-shadow ui-corner-all">Show page "two"</a></p>
         <p><a href="#popup" class="ui-btn ui-shadow ui-corner-all" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p>
     </div><!-- /content -->
 
-    <div data-role="footer" data-theme="a">
-        <h4>Page Footer</h4>
-    </div><!-- /footer -->
     <div data-role="footer" class="nav-glyphish-example" data-theme="b">
         <div data-role="navbar" class="nav-glyphish-example" data-grid="b"><ul>
-            <li><a href="#one" id="chat" data-icon="custom">Chat</a></li><li><a href="#two" id="email" data-icon="custom">Contact</a></li><li><a href="#popup" id="gear" data-icon="custom">Setting</a></li>
+            <li><a href="#one" id="chat-active" data-icon="custom">Chat</a></li><li><a href="#two" id="contact" data-icon="custom">Contact</a></li><li><a href="#popup" id="gear" data-icon="custom">Setting</a></li>
         </ul>
-        </div>
-    </div>
+        </div>
+    </div><!-- /footer -->
 </div><!-- /page one -->
 
 <!-- Start of second page: #two -->
@@ -64,10 +59,10 @@
 
     <div data-role="footer" class="nav-glyphish-example" data-theme="b">
         <div data-role="navbar" class="nav-glyphish-example" data-grid="b"><ul>
-            <li><a href="#one" id="chat" data-icon="custom">Chat</a></li><li><a href="#two" id="email" data-icon="custom">Contact</a></li><li><a href="#popup" id="gear" data-icon="custom">Setting</a></li>
+            <li><a href="#one" id="chat" data-icon="custom">Chat</a></li><li><a href="#two" id="contact-active" data-icon="custom">Contact</a></li><li><a href="#popup" id="gear" data-icon="custom">Setting</a></li>
         </ul>
-        </div>
-    </div>
+        </div>
+    </div><!-- /footer -->
 </div><!-- /page two -->
 
 <!-- Start of third page: #popup -->
