@@ -10,6 +10,12 @@
  */
 
 $(document).ready(function(){
+    if (localStorage["number"] == undefined) {
+        localStorage.removeItem("number");
+        var t=setTimeout(function(){
+            $( ":mobile-pagecontainer" ).pagecontainer( "change", "#login-page" );
+        },10);
+    }
     $.support.cors=true;
     $('form').submit(function(event){
         var num = $('#number').val();

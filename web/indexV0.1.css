@@ -1,16 +1,16 @@
-.nav-glyphish-example .ui-btn { padding-top: 40px !important; }
+.nav-glyphish-example .ui-btn {padding-top: 40px !important; }
 .nav-glyphish-example .ui-btn:after { width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important; }
-#chat:after {
+#chat-nav:after {
     background:url("./Scripts/jquerymobile/demos/_assets/img/glyphish-icons/09-chat2.png") 50% 50% no-repeat; 
     background-size: 24px 22px;
 }
-#chat-active{
+#chat-nav-active{
     background-color: #2ad;
     border-color: #2ad;
     color: #fff;
     text-shadow: 0 1px 0 #08b;
 }
-#chat-active:after {
+#chat-nav-active:after {
     background:url("./Scripts/jquerymobile/demos/_assets/img/glyphish-icons/09-chat2.png") 50% 50% no-repeat; 
     background-size: 24px 22px;
 }
@@ -18,21 +18,21 @@
     background:url("./Scripts/jquerymobile/demos/_assets/img/glyphish-icons/18-envelope.png") 50% 50% no-repeat; 
     background-size: 24px 16px;
 }
-#contact:after { 
+#contact-nav:after { 
     background:url("./Content/icons/material-design/png/account4-white-24.png") 50% 50% no-repeat; 
     background-size: 24px 24px;
 }
-#contact-active{
+#contact-nav-active{
     background-color: #2ad;
     border-color: #2ad;
     color: #fff;
     text-shadow: 0 1px 0 #08b;
 }
-#contact-active:after { 
+#contact-nav-active:after { 
     background:url("./Content/icons/material-design/png/account4-white-24.png") 50% 50% no-repeat; 
     background-size: 24px 24px;
 }
-#gear:after { 
+#gear-nav:after { 
     background:url("./Content/icons/material-design/png/settings49-white-24.png") 50% 50% no-repeat;
     background-size: 24px 24px;
 }

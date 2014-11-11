@@ -11,12 +11,13 @@
     <script src="./Scripts/jquerymobile/demos/js/jquery.js"></script>
     <script src="./Scripts/jquerymobile/demos/_assets/js/index.js"></script>
     <script src="./Scripts/jquerymobile/demos/js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="./functions.js"></script>
 </head>
 
 <body>
 
-<!-- Start of first page: #one -->
-<div data-role="page" id="one">
+<!-- Start of first page: #chat-page -->
+<div data-role="page" id="chat-page">
 
     <div data-role="header">
         <h1>Shh...note</h1>
@@ -34,16 +35,16 @@
         <p><a href="#popup" class="ui-btn ui-shadow ui-corner-all" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p>
     </div><!-- /content -->
 
-    <div data-role="footer" class="nav-glyphish-example" data-theme="b">
+    <div data-role="footer" class="nav-glyphish-example" data-theme="b" data-position="fixed">
         <div data-role="navbar" class="nav-glyphish-example" data-grid="b"><ul>
-            <li><a href="#one" id="chat-active" data-icon="custom">Chat</a></li><li><a href="#two" id="contact" data-icon="custom">Contact</a></li><li><a href="#popup" id="gear" data-icon="custom">Setting</a></li>
+            <li><a href="#chat-page" id="chat-nav-active" data-icon="custom">Chat</a></li><li><a href="#contact-page" id="contact-nav" data-icon="custom">Contact</a></li><li><a href="#popup" id="gear-nav" data-icon="custom">Setting</a></li>
         </ul>
         </div>
     </div><!-- /footer -->
-</div><!-- /page one -->
+</div><!-- /page chat-page -->
 
-<!-- Start of second page: #two -->
-<div data-role="page" id="two" data-theme="a">
+<!-- Start of second page: #contact-page -->
+<div data-role="page" id="contact-page" data-theme="a">
 
     <div data-role="header">
         <h1>Two</h1>
@@ -53,19 +54,57 @@
         <h2>Two</h2>
         <p>I have an id of "two" on my page container. I'm the second page container in this multi-page template.</p>
         <p>Notice that the theme is different for this page because we've added a few <code>data-theme</code> swatch assigments here to show off how flexible it is. You can add any content or widget to these pages, but we're keeping these simple.</p>
-        <p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Back to page "one"</a></p>
+        <p><a href="#chat-page" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Back to page "one"</a></p>
 
     </div><!-- /content -->
 
-    <div data-role="footer" class="nav-glyphish-example" data-theme="b">
+    <div data-role="footer" class="nav-glyphish-example" data-theme="b" data-position="fixed">
         <div data-role="navbar" class="nav-glyphish-example" data-grid="b"><ul>
-            <li><a href="#one" id="chat" data-icon="custom">Chat</a></li><li><a href="#two" id="contact-active" data-icon="custom">Contact</a></li><li><a href="#popup" id="gear" data-icon="custom">Setting</a></li>
+            <li><a href="#chat-page" id="chat-nav" data-icon="custom">Chat</a></li><li><a href="#contact-page" id="contact-nav-active" data-icon="custom">Contact</a></li><li><a href="#popup" id="gear-nav" data-icon="custom">Setting</a></li>
         </ul>
         </div>
     </div><!-- /footer -->
-</div><!-- /page two -->
+</div><!-- /page contact-page -->
 
-<!-- Start of third page: #popup -->
+<!-- Start of third page: #login-page -->
+<div data-role="page" id="login-page" data-theme="a">
+
+    <div data-role="header">
+        <h1>Login</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+        <form>
+             <label for="phone">Your Phone Number:</label>
+             <input type="text" data-clear-btn="true" name="phone" id="phone" value="">
+        </form>
+        <button class="ui-btn" onclick="send_verifyCode($('#phone').val())">Send Verify Code</button>
+        <p>We will send a message to you with verify code.</p>
+    </div><!-- /content -->
+
+    <div data-role="footer" data-position="fixed"></div><!-- /footer -->
+</div><!-- /page login-page -->
+
+<!-- Start of third page: #login-page -->
+<div data-role="page" id="login-page" data-theme="a">
+
+    <div data-role="header">
+        <h1>Login</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+        <form>
+             <label for="phone">Your Phone Number:</label>
+             <input type="text" data-clear-btn="true" name="phone" id="phone" value="">
+        </form>
+        <button class="ui-btn" onclick="send_verifyCode($('#phone').val())">Send Verify Code</button>
+        <p>We will send a message to you with verify code.</p>
+    </div><!-- /content -->
+
+    <div data-role="footer" data-position="fixed"></div><!-- /footer -->
+</div><!-- /page login-page -->
+
+<!-- Start of fifth page: #popup -->
 <div data-role="page" id="popup">
 
     <div data-role="header" data-theme="b">
