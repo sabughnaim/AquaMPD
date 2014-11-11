@@ -21,6 +21,29 @@ $(document).ready(function(){
     });
 });
 
+function create_new_user(num) {
+    $.post("https://shhnote-dev.herokuapp.com/db/new-user",{number: num}, function(data) {
+        console.log ( data );
+    });
+}
+
+function check_user(num) {
+    $.post("https://shhnote-dev.herokuapp.com/db/check-user-exist",{number: num}, function(data) {
+        console.log ( data );
+    });
+}
+
+function send_verifyCode(num) {
+    $.post("https://shhnote-dev.herokuapp.com/db/send-verifyCode",{number: num}, function(data) {
+        console.log ( data );
+    });
+}
+
+function check_verifyCode(num,code) {
+    $.post("https://shhnote-dev.herokuapp.com/db/check-verifyCode",{number: num, verifycode: code}, function(data) {
+        console.log ( data );
+    });
+}
 
 /*!
  * typeahead.js 0.9.3
