@@ -4,7 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Multi-page template</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Shh...note</title>
+    <link rel="icon" sizes="192x192" href="./Content/icons/material-design/png/shh-192.png">
+    <link rel="manifest" href="./Content/manifest.json">
     <link rel="stylesheet" href="./Scripts/jquerymobile/demos/css/themes/default/jquery.mobile-1.4.5.min.css">
     <link rel="stylesheet" href="./Scripts/jquerymobile/demos/_assets/css/jqm-demos.css">
     <link rel="stylesheet" href="./indexV0.1.css">
@@ -16,6 +21,21 @@
 
 <body>
 
+<!-- Start of initial page: #initial-page -->
+<div data-role="page" id="initial-page">
+
+    <div data-role="header">
+        <h1>Shh...note</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+        <!-- This is a default page. When there are bugs in login, Shh...note will display this page -->
+    </div><!-- /content -->
+
+    <div data-role="footer" data-position="fixed">
+    </div><!-- /footer -->
+</div><!-- /page initial-page -->
+    
 <!-- Start of first page: #chat-page -->
 <div data-role="page" id="chat-page">
 
@@ -94,11 +114,14 @@
 
     <div role="main" class="ui-content">
         <form>
-             <label for="verifyCode">Your Phone Number:</label>
+             <label for="verifyCode">Your Verify Code:</label>
              <input type="tel" data-clear-btn="true" name="verifyCode" id="verifyCode" value="">
         </form>
         <button class="ui-btn" onclick="check_verifyCode($('#phone').val().toString(),$('#verifyCode').val().toString())">Verify</button>
         <p>A message with verify code has sent to you. Verify your phone number, access Shh...note, Enjoy!</p>
+        <div data-role="popup" id="popup-verify-code-incorrect" data-transition="flip">
+        <p>Your verify code is incorrect.</p>
+        </div>
     </div><!-- /content -->
 
     <div data-role="footer" data-position="fixed"></div><!-- /footer -->
@@ -121,6 +144,25 @@
         <h4>Page Footer</h4>
     </div><!-- /footer -->
 </div><!-- /page popup -->
+
+<!-- Start of sixth page: #sign-up-page -->
+<div data-role="page" id="sign-up-page" data-theme="a">
+
+    <div data-role="header">
+        <h1>Sign Up</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+        <form>
+             <label for="username">Your Name:</label>
+             <input type="text" data-clear-btn="true" name="username" id="username" value="">
+        </form>
+        <button class="ui-btn" onclick="save_username($('#phone').val().toString(),$('#username').val().toString());">Save My Name</button>
+        <p></p>
+    </div><!-- /content -->
+
+    <div data-role="footer" data-position="fixed"></div><!-- /footer -->
+</div><!-- /page login-page -->
 
 </body>
 </html>
