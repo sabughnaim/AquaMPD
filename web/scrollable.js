@@ -12,7 +12,7 @@ $.widget( "mobile.carousel", $.extend( {
 		barrel: null,
 		bullets: true,
 		bulletsPos: "bottom",
-		transition: "slide"
+		transition: "slide",
 	},
 
 	_create: function () {
@@ -41,8 +41,8 @@ $.widget( "mobile.carousel", $.extend( {
 
 		this._on( el, {
 			"keypress": "_onKeyPress",
-			"swipeleft": function () { this.jump( -1 ); },
-			"swiperight": function () { this.jump( 1 ); }
+			"swipeleft": function () { this.jump(-1); },
+			"swiperight": function () { this.jump(1); }
 		});
 
 		this._items = this._getItems( "li" );
@@ -51,8 +51,8 @@ $.widget( "mobile.carousel", $.extend( {
 
 	_onKeyPress: function ( e ) {
 		switch (e.keyCode) {
-			case $.mobile.keyCode.LEFT: this.jump( -1 ); break;
-			case $.mobile.keyCode.RIGHT: this.jump( 1 ); break;
+			case $.mobile.keyCode.LEFT: this.jump(-1); break;
+			case $.mobile.keyCode.RIGHT: this.jump(1); break;
 		}
 	},
 

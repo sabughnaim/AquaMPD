@@ -115,3 +115,21 @@ bottom: 0;
 .ui-carousel-captions-top {
 top: 0;
 }
+.button-cir{
+    display:block;
+           width:100px;
+           height:100px;
+           border-radius:50px;
+           font-size:20px;
+           color:#fff;
+           line-height:100px;
+           text-align:center;
+           background:#000;
+}
+
+.contacts{
+    height: 200px;
+    width: 100%;
+    position: absolute;
+    background: white;
+}
