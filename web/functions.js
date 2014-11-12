@@ -9,6 +9,14 @@
  * Author: Yaliang
  */
 
+function onDeviceReady() {
+    if (device.platform === 'iOS' && parseFloat(device.version) >= 7.0) {
+        document.body.style.marginTop = "20px";
+    }
+}
+
+document.addEventListener('deviceready', onDeviceReady, false);
+
 $(document).ready(function(){
     if (localStorage["phone"] == undefined) {
         localStorage.removeItem("phone");
