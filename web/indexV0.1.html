@@ -18,6 +18,8 @@
     <script src="./Scripts/jquerymobile/demos/_assets/js/index.js"></script>
     <script src="./Scripts/jquerymobile/demos/js/jquery.mobile-1.4.5.min.js"></script>
     <script src="./functions.js"></script>
+    <script src="./scrollable.js"></script>
+
 </head>
 
 <body>
@@ -45,13 +47,25 @@
     </div><!-- /header -->
 
     <div role="main" class="ui-content">
-        <h2>One</h2>
+        <h2>Basic Scroller for Contacts</h2>
+    <div data-role="content" id="content" class="ui-content" role="main" style="width:100%; margin-left:-20px">
+        <div style="width: 100%; height: 200px; display: inline-block;">
+        <ul data-role="carousel" data-captions="false" data-inset="false" data-shadow="false" class="ui-carousel" tabindex="-1">
+        <li class="ui-carousel-active"><a href="#" class="ui-link">
+            <img src="./oink.gif" height="200" />
+        </a></li>
+        <li><a href="#" class="ui-link"> 
+            <img src="./blue.gif" height="200" />
+        </a></li>
+        <li><a href="#" class="ui-link"> 
+            <img src="./green.gif" height="200" />
+        </a></li>
+        </ul>
+        </div>
+    </div>
 
-        <p>I have an <code>id</code> of "one" on my page container. I'm first in the source order so I'm shown when the page loads.</p>
-
-        <p>This is a multi-page boilerplate template that you can copy to build your first jQuery Mobile page. This template contains multiple "page" containers inside, unlike a single page template that has just one page within it.</p>
-        <p>Just view the source and copy the code to get started. All the CSS and JS is linked to the jQuery CDN versions so this is super easy to set up. Remember to include a meta viewport tag in the head to set the zoom level.</p>
-        <p>You link to internal pages by referring to the <code>id</code> of the page you want to show. For example, to <a href="#two">link</a> to the page with an <code>id</code> of "two", my link would have a <code>href="#two"</code> in the code.</p>
+        
+        <!--<p>You link to internal pages by referring to the <code>id</code> of the page you want to show. For example, to <a href="#two">link</a> to the page with an <code>id</code> of "two", my link would have a <code>href="#two"</code> in the code.</p>-->
 
         <p><a href="#popup" class="ui-btn ui-shadow ui-corner-all" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p>
     </div><!-- /content -->
