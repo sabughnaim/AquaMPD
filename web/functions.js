@@ -12,9 +12,35 @@
 $(document).ready(function(){
     if (localStorage["phone"] == undefined) {
         localStorage.removeItem("phone");
+        localStorage.removeItem("verifycode");
         var t=setTimeout(function(){
             $( ":mobile-pagecontainer" ).pagecontainer( "change", "#login-page" );
         },10);
+    } else {
+        if (localStorage["verifycode"] == undefined) {
+            localStorage.removeItem("verifycode");
+            $('#phone').val(parseInt(localStorage["phone"]));
+            var t=setTimeout(function(){
+                $( ":mobile-pagecontainer" ).pagecontainer( "change", "#login-page" );
+            },10);
+        } else {
+            num=localStorage["phone"];
+            code=localStorage["verifycode"];
+            $.post("https://shhnote-dev.herokuapp.com/db/check-verifyCode",{number: num, verifycode: code}, function(data) {
+                console.log(data);
+                if (data.toString().substr(0, 4).localeCompare('true')) {
+                    localStorage.removeItem("verifycode");
+                    $('#phone').val(parseInt(localStorage["phone"]));
+                    var t=setTimeout(function(){
+                        $( ":mobile-pagecontainer" ).pagecontainer( "change", "#login-page" );
+                    },10);
+                } else {
+                    $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
+                    localStorage["phone"]=num;
+                    localStorage["verifycode"]=code;
+                }
+            });
+        }
     }
     $.support.cors=true;
     $('form').submit(function(event){
@@ -30,6 +56,7 @@ $(document).ready(function(){
 function create_new_user(num) {
     $.post("https://shhnote-dev.herokuapp.com/db/new-user",{number: num}, function(data) {
         console.log ( data );
+        $( ":mobile-pagecontainer" ).pagecontainer( "change", "#sign-up-page" );
     });
 }
 
@@ -43,7 +70,7 @@ function send_verifyCode(num) {
     $.post("https://shhnote-dev.herokuapp.com/db/send-verifyCode",{number: num}, function(data) {
         console.log ( data );
         if (data.toString().substr(0, 10).localeCompare('verifycode')) {
-            
+            create_new_user(num);
         } else {
             $( ":mobile-pagecontainer" ).pagecontainer( "change", "#verify-page" );
         }
@@ -54,11 +81,20 @@ function check_verifyCode(num,code) {
     $.post("https://shhnote-dev.herokuapp.com/db/check-verifyCode",{number: num, verifycode: code}, function(data) {
         console.log(data);
         if (data.toString().substr(0, 4).localeCompare('true')) {
-            
+            $('#verifyCode').val("");
+            $('#popup-verify-code-incorrect').popup("open");
         } else {
             $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
-            localStorage["phone"]=JSON.stringify(num);
+            localStorage["phone"]=num;
+            localStorage["verifycode"]=code;
         }
+    });
+}
+
+function save_username(num,name) {
+    $.post("https://shhnote-dev.herokuapp.com/db/save-user-name",{number: num, name: name}, function(data) {
+        console.log ( data );
+        $( ":mobile-pagecontainer" ).pagecontainer( "change", "#verify-page" );
     });
 }
 
