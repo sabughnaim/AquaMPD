@@ -1,7 +1,7 @@
 .nav-glyphish-example .ui-btn {padding-top: 40px !important; }
 .nav-glyphish-example .ui-btn:after { width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important; }
 #chat-nav:after {
-    background:url("./Scripts/jquerymobile/demos/_assets/img/glyphish-icons/09-chat2.png") 50% 50% no-repeat; 
+    background:url("./Content/icons/material-design/png/chat76-white-24.png") 50% 50% no-repeat; 
     background-size: 24px 22px;
 }
 #chat-nav-active{
@@ -11,7 +11,7 @@
     text-shadow: 0 1px 0 #08b;
 }
 #chat-nav-active:after {
-    background:url("./Scripts/jquerymobile/demos/_assets/img/glyphish-icons/09-chat2.png") 50% 50% no-repeat; 
+    background:url("./Content/icons/material-design/png/chat76-white-24.png") 50% 50% no-repeat; 
     background-size: 24px 22px;
 }
 #email:after { 
