@@ -99,6 +99,10 @@ $(document).ready(function(){
 });
 
 function create_new_user(num) {
+    if (num.length<14) {
+        $('#phone-number-incorrect').popup("open");
+        return;
+    };
     $.post("https://shhnote-dev.herokuapp.com/db/new-user",{number: num}, function(data) {
         console.log ( data );
         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#sign-up-page" );
@@ -123,7 +127,6 @@ function send_verifyCode(num) {
 }
 
 function check_verifyCode(num,code) {
-
     $.post("https://shhnote-dev.herokuapp.com/db/check-verifyCode",{number: num, verifycode: code}, function(data) {
         console.log(data);
         if (data.toString().substr(0, 4).localeCompare('true')) {
