@@ -37,84 +37,11 @@
     background-size: 24px 24px;
 }
 
-.ui-carousel {
-list-style: none outside none;
-margin-left: -10px;
-padding: 0;
-position: relative;
-text-align: center;
-height: inherit;
-min-height: inherit;
-overflow:hidden;
-outline: 0;
-}
-.ui-carousel li {
--webkit-border-radius: inherit;
--moz-border-radius: inherit;
-border-radius: inherit;
-display: none;
-list-style: none outside none;
-overflow: inherit;
-position: absolute;
-width: 100%;
-}
-.ui-carousel-inset {
-margin: 1em auto;
--webkit-border-radius: 1em;
--moz-border-radius: 1em;
-border-radius: 1em;
-}
-.ui-carousel li.ui-carousel-transitioning {
--webkit-box-sizing: border-box;
--moz-box-sizing: border-box;
-box-sizing: border-box;
-}
-.ui-carousel li.ui-carousel-active {
-display: block;
-}
-.ui-carousel li a {
--webkit-border-radius: inherit;
--moz-border-radius: inherit;
-border-radius: inherit;
-overflow: inherit;
-}
-.ui-carousel img {
-width: 100%;
-display: block;
--webkit-border-radius: inherit;
--moz-border-radius: inherit;
-border-radius: inherit;
-min-height: inherit;
-}
-.ui-carousel-controls {
-text-align: center;
-display:none;
-}
-.ui-carousel-controls .ui-radio {
-display: none;
-padding: 0 .25em;
-}
-.ui-carousel-controls .ui-radio label:after {
-left: .2em;
-display:none;
-}
-.ui-carousel-captions .ui-carousel-captions-heading {
-margin: 0;
-padding: 0;
-}
-.ui-carousel-captions-content {
-left: 0;
-margin: 0;
-padding: 0.5em 0;
-position: absolute;
-right: 0;
-}
-.ui-carousel-captions-bottom {
-bottom: 0;
-}
-.ui-carousel-captions-top {
-top: 0;
-}
+.slick-slide .image{padding:10px;}
+.slick-slide img{border:5px solid #FFF;display:block;width:100%;}
+.slick-slide img.slick-loading{border:0 }
+.slick-slider{margin:30px auto 50px;}
+
 .button-cir{
     display:block;
            width:100px;
