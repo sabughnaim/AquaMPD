@@ -117,7 +117,7 @@
     <div role="main" class="ui-content">
         <form>
              <label for="phone">Your Phone Number:</label>
-             <input type="tel" data-clear-btn="true" name="phone" id="phone" value="">
+             <input type="tel" data-clear-btn="true" name="phone" id="phone" maxlength="14" value="">
         </form>
         <button class="ui-btn" onclick="send_verifyCode($('#phone').val().toString())">Send Verify Code</button>
         <p>We will send a message to you with verify code.</p>
