@@ -27,7 +27,7 @@ $(document).ready(function(){
     } else {
         if (localStorage["verifycode"] == undefined) {
             localStorage.removeItem("verifycode");
-            $('#phone').val(parseInt(localStorage["phone"]));
+            $('#phone').val(localStorage["phone"]);
             var t=setTimeout(function(){
                 $( ":mobile-pagecontainer" ).pagecontainer( "change", "#login-page" );
             },10);
@@ -38,7 +38,7 @@ $(document).ready(function(){
                 console.log(data);
                 if (data.toString().substr(0, 4).localeCompare('true')) {
                     localStorage.removeItem("verifycode");
-                    $('#phone').val(parseInt(localStorage["phone"]));
+                    $('#phone').val(localStorage["phone"]);
                     var t=setTimeout(function(){
                         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#login-page" );
                     },10);
@@ -96,7 +96,10 @@ $(document).ready(function(){
             $phone.val('');
         }
     });
-    var t=setTimeout(function(){
+    get_fack_contact();
+});
+
+function ini_contact(){
         $('.responsive').slick({
             dots: true,
             infinite: false,
@@ -106,27 +109,43 @@ $(document).ready(function(){
             responsive: [{
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 5,
-                    slidesToScroll: 5,
+                    slidesToShow: 7,
+                    slidesToScroll: 7,
                     infinite: true,
                     dots: true
                 }
             }, {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4
+                    slidesToShow: 6,
+                    slidesToScroll: 6
                 }
             }, {
                 breakpoint: 480,
                 settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3
+                    slidesToShow: 5,
+                    slidesToScroll: 5
                 }
             }]
         });
-    },10);
-});
+}
+
+function get_fake_contact(){
+    $.post("https://shhnote-dev.herokuapp.com/fake_contact_number", function(data){
+        var fake_contact_number = parseInt(data);
+        for (i=0; i<fake_contact_number; i++) {
+            $.post("https://shhnote-dev.herokuapp.com/fake_contact",{contact_id:i},function(data){
+                var fake_contact = JSON.parse(data);
+                $('.responsive').append("<div style='height: 130px; line-height:130px; text-align:center' onclick='fill_fake_contact("+fake_contact.phone+")'>"+fake_contact.abbr+"</div>");
+                ini_contact();
+            })
+        }
+    });
+}
+
+function fill_fake_contact(num){
+    $('#number').val(num);
+}
 
 function create_new_user(num) {
     if (num.length<14) {
