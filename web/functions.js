@@ -16,6 +16,8 @@ function onDeviceReady() {
 }
 
 document.addEventListener('deviceready', onDeviceReady, false);
+var load_contact= new Array();
+var fake_contact_numner=0;
 
 $(document).ready(function(){
     if (localStorage["phone"] == undefined) {
@@ -96,7 +98,7 @@ $(document).ready(function(){
             $phone.val('');
         }
     });
-    get_fack_contact();
+    get_fake_contact();
 });
 
 function ini_contact(){
@@ -128,19 +130,43 @@ function ini_contact(){
                 }
             }]
         });
-}
+};
 
 function get_fake_contact(){
     $.post("https://shhnote-dev.herokuapp.com/fake_contact_number", function(data){
-        var fake_contact_number = parseInt(data);
+        console.log ( data );
+        fake_contact_number = parseInt(data);
         for (i=0; i<fake_contact_number; i++) {
+            load_contact[i]=false;
             $.post("https://shhnote-dev.herokuapp.com/fake_contact",{contact_id:i},function(data){
+                console.log ( data );
                 var fake_contact = JSON.parse(data);
-                $('.responsive').append("<div style='height: 130px; line-height:130px; text-align:center' onclick='fill_fake_contact("+fake_contact.phone+")'>"+fake_contact.abbr+"</div>");
-                ini_contact();
+                $('.responsive').append("<div id='contact_"+fake_contact.id+"'style='display:none; height: 130px; line-height:130px; text-align:center; background-color:"+'#'+Math.floor(Math.random()*16777215).toString(16)+"' onclick='fill_fake_contact(\""+fake_contact.phone+"\")'>"+fake_contact.abbr+"</div>");
+                load_contact[fake_contact.id]=true;
             })
-        }
+        };
+        check_fake_contact_loaded();
     });
+}
+
+function check_fake_contact_loaded(){
+    var t=setTimeout(function() {
+        var loaded = true;
+        for (i=0; i<fake_contact_number; i++) {
+            if (load_contact[i]==false) {
+                loaded = false;
+                break;
+            }
+        }
+        if (loaded==true) {
+            ini_contact();
+            for (i=0; i<fake_contact_number; i++) {
+                $("#contact_"+i).show();
+            };
+        } else {
+            check_fake_contact_loaded();
+        }
+    },100);
 }
 
 function fill_fake_contact(num){
