@@ -55,8 +55,17 @@
     position: absolute;
     background: white;
 }
-.inbox
-{
+.inbox{
     height: 50%;
-    
+    font-family: 'Indie Flower', cursive;
+}
+inbox.h1{
+    text-align: left;
+}
+inbox.p{
+    padding-bottom: 20px;
+}
+.clear-button{
+    background: transparent;
+    color: black;
 }
