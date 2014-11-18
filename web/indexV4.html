@@ -52,17 +52,25 @@
         <div class="inbox">
             <h1>Inbox</h1>
             <p id="tmess" style="text-align: center;">You have no new messages.</p>
-            <a href="#" data-role="button" data-inline='true' data-mini='true' data-icon="alert" style='background-color:red; text-shadow: none'>Report</a>
+        <!--    <a href="#" data-role="button" data-inline='true' data-mini='true' data-icon="alert" style='background-color:red; text-shadow: none'>Report</a>
             <a href="#" data-role="button" data-inline='true' data-mini='true' data-icon="delete">Dismiss</a>
             <a href="#" data-role="button" data-inline='true' data-mini='true' data-icon="arrow-u">Like</a>
             <a href="#" data-role="button" data-inline='true' data-mini='true' data-icon="arrow-d">Dislike</a>
+        !-->
+        </div>
+        <div id="inbox-panel">
+            <div style="float:left; width:20%"><a href="#" id="inbox-panel-flag" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left" data-icon="custom">Flag</a></div>
+            <div style="float:left; width:20%; height:1px"></div>
+            <div style="float:left; width:20%"><a href="#" id="inbox-panel-dismiss" class="ui-shadow ui-btn ui-corner-all" data-icon="custom">Dismiss</a></div>
+            <div style="float:right;"><a href="#" id="inbox-panel-like" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-right" data-icon="custom">Like</a></div>
+            <div style="float:right;"><a href="#" id="inbox-panel-dislike" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-right" data-icon="custom">Dislike</a></div>
         </div>
 
     </div><!-- /content -->
 
     <div data-role="footer" data-position="fixed">
-        <div class="slider responsive">
-        </div>
+        <!--<div class="slider responsive">
+        </div>!-->
     </div><!-- /footer -->
 </div><!-- /page chat-page -->
 

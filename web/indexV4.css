@@ -1,5 +1,20 @@
 .nav-glyphish-example .ui-btn {padding-top: 40px !important; }
 .nav-glyphish-example .ui-btn:after { width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important; }
+#inbox-panel-flag:after {
+    background:url("./Content/icons/material-design/png/thermostat1.png") 50% 50% no-repeat; 
+    background-size: 24px 24px;
+}
+
+#inbox-panel-like:after {
+    background:url("./Content/icons/material-design/png/thumb54.png") 50% 50% no-repeat; 
+    background-size: 24px 24px;
+}
+
+#inbox-panel-dislike:after {
+    background:url("./Content/icons/material-design/png/thumb53.png") 50% 50% no-repeat; 
+    background-size: 24px 24px;
+}
+
 #chat-nav:after {
     background:url("./Content/icons/material-design/png/chat76-white-24.png") 50% 50% no-repeat; 
     background-size: 24px 22px;
@@ -59,6 +74,11 @@
     height: 50%;
     font-family: 'Indie Flower', cursive;
 }
+
+.ui-btn-text {
+    font-size: 15px; /* Play with font size of the text */
+}
+
 inbox.h1{
     text-align: left;
 }
