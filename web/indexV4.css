@@ -79,6 +79,10 @@
     font-size: 14px; /* Play with font size of the text */
 }
 
+.inbox-panel{
+    text-align: center;
+}
+
 inbox.h1{
     text-align: left;
 }
