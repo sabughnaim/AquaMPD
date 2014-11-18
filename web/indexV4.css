@@ -75,8 +75,8 @@
     font-family: 'Indie Flower', cursive;
 }
 
-.ui-btn-text {
-    font-size: 15px; /* Play with font size of the text */
+.ui-btn {
+    font-size: 14px; /* Play with font size of the text */
 }
 
 inbox.h1{
