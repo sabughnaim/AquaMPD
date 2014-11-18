@@ -5,6 +5,11 @@
     background-size: 24px 24px;
 }
 
+#inbox-panel-dismiss:after {
+    background:url("./Content/icons/material-design/png/cancel19.png") 50% 50% no-repeat; 
+    background-size: 24px 24px;
+}
+
 #inbox-panel-like:after {
     background:url("./Content/icons/material-design/png/thumb54.png") 50% 50% no-repeat; 
     background-size: 24px 24px;
