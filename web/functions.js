@@ -64,7 +64,14 @@ $(document).ready(function(){
         });
         event.preventDefault();
     });
-    $('#phone').keydown(function (e) {
+    phone_number_regex();
+    get_fake_contact();
+    pullContact();
+    pullMessages();
+});
+
+function phone_number_regex(){
+    $('#phone, #newContactPhone').keydown(function (e) {
         var key = e.charCode || e.keyCode || 0;
         $phone = $(this);
         console.log($phone);
@@ -84,7 +91,7 @@ $(document).ready(function(){
         // Allow numeric (and tab, backspace, delete) keys only
         return (key == 8 || key == 9 || key == 46 || (key >= 48 && key <= 57) || (key >= 96 && key <= 105));    
     });
-    $('#phone').bind('focus click', function () {
+    $('#phone, #newContactPhone').bind('focus click', function () {
             $phone = $(this);
             if ($phone.val().length === 0) {
                 $phone.val('(');
@@ -94,16 +101,14 @@ $(document).ready(function(){
             }
     });
 
-    $('#phone').blur(function () {
+    $('#phone, #newContactPhone').blur(function () {
         $phone = $(this);
 
         if ($phone.val() === '(') {
             $phone.val('');
         }
     });
-    get_fake_contact();
-    pullMessages();
-});
+}
 
 function ini_contact(){
         $('.responsive').slick({
@@ -177,6 +182,10 @@ function fill_fake_contact(num){
     $('#number').val(num);
 }
 
+function fill_contact(num){
+    $('#number').val(num);
+}
+
 function create_new_user(num) {
     if (num.length<14) {
         $('#phone-number-incorrect').popup("open");
@@ -240,4 +249,24 @@ function pullMessages(){
             text.innerHTML=message[0].mtext;
         }
     });
-}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+}           
+
+function pullContact(){
+    $.post("https://shhnote-dev.herokuapp.com/db/get-contact",{number: localStorage["phone"]}, function(data) {
+        var contact = JSON.parse(data);
+        //console.log(data);
+        //console.log(contact);
+        for (var i=0; i<contact.length; i++){
+            //"<div id='contact_"+fake_contact.id+"'style='display:none; height: 130px; line-height:130px; text-align:center; background-color:"+'#'+Math.floor(Math.random()*16777215).toString(16)+"' onclick='fill_fake_contact(\""+fake_contact.phone+"\")'>"+fake_contact.abbr+"</div>"
+            $('#user-contact-list').append("<li class='ui-screen-hidden'><a href='#' onclick='fill_contact(\""+contact[i].contactphone+"\")'>"+contact[i].contactname+"</a></li>");
+        }
+    })
+}
+
+function createContact(contactName, contactPhone){
+    $.post("https://shhnote-dev.herokuapp.com/db/create-new-contact",{number: localStorage["phone"], contactName: contactName, contactPhone: contactPhone}, function(data) {
+        console.log ( data );
+        $('#user-contact-list').append("<li class='ui-screen-hidden'><a href='#' onclick='fill_contact(\""+contactPhone+"\")'>"+contactName+"</a></li>");
+        $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
+    });
+}
