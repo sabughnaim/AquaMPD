@@ -66,6 +66,14 @@
             <div style="float:left; width:15%;"><a href="#" id="inbox-panel-like" class="ui-btn ui-btn-icon-right" data-icon="custom">Like</a></div>
             <div style="float:left; width:15%;"><a href="#" id="inbox-panel-dislike" class="ui-btn ui-btn-icon-right" data-icon="custom">Dislike</a></div>
         </div>
+        
+        <form class="ui-filterable">
+            <input id="autocomplete-input" data-type="search" placeholder="Search contacts...">
+        </form>
+        <ul id="user-contact-list" data-role="listview" data-filter="true" data-inset="true" data-filter-reveal="true" data-input="#autocomplete-input">
+        </ul>
+        
+        <p><a href="#create-contact" class="ui-btn ui-shadow ui-corner-all" data-rel="dialog" data-transition="pop">Create New Contact</a></p>
 
     </div><!-- /content -->
 
@@ -138,7 +146,7 @@
     <div role="main" class="ui-content">
         <form>
              <label for="verifyCode">Your Verify Code:</label>
-             <input type="tel" data-clear-btn="true" name="verifyCode" id="verifyCode" value="">
+             <input type="tel" data-clear-btn="true" name="verifyCode" maxlength="6" id="verifyCode" value="">
         </form>
         <button class="ui-btn" onclick="check_verifyCode($('#phone').val().toString(),$('#verifyCode').val().toString())">Verify</button>
         <p>A message with verify code has sent to you. Verify your phone number, access Shh...note, Enjoy!</p>
@@ -151,20 +159,25 @@
 </div><!-- /page login-page -->
 
 <!-- Start of fifth page: #popup -->
-<div data-role="page" id="popup">
+<div data-role="page" id="create-contact">
 
     <div data-role="header" data-theme="b">
-        <h1>Dialog</h1>
+        <h1>Create New Contact</h1>
     </div><!-- /header -->
 
     <div role="main" class="ui-content">
-        <h2>Popup</h2>
-        <p>I have an id of "popup" on my page container and only look like a dialog because the link to me had a <code>data-rel="dialog"</code> attribute which gives me this inset look and a <code>data-transition="pop"</code> attribute to change the transition to pop. Without this, I'd be styled as a normal page.</p>
-        <p><a href="#one" data-rel="back" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left">Back to page "one"</a></p>
+        <form>
+            <label for="newContactName">Contact Name:</label>
+            <input type="text" data-clear-btn="true" name="newContactName" maxlength="32" id="newContactName" value="">
+            <label for="newContactPhone">Contact Phone:</label>
+            <input type="tel" data-clear-btn="true" name="newContactPhone" maxlength="14" id="newContactPhone" value="">
+        </form>
+        </br>
+        <button class="ui-btn ui-icon-cloud ui-shadow ui-corner-all ui-btn-icon-left" onclick="createContact($('#newContactName').val().toString(),$('#newContactPhone').val().toString())">Add</button>
+        <p><a href="#char-page" data-rel="back" class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-left">Cancel</a></p>
     </div><!-- /content -->
 
     <div data-role="footer">
-        <h4>Page Footer</h4>
     </div><!-- /footer -->
 </div><!-- /page popup -->
 
