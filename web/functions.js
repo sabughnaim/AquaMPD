@@ -61,6 +61,7 @@ $(document).ready(function(){
         //});
         $.post("https://shhnote-dev.herokuapp.com/db/save-message",{number: localStorage["phone"], receiver: num, message: text }, function(data) {
             console.log ( data );
+            $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
         });
         event.preventDefault();
     });
@@ -258,7 +259,7 @@ function pullContact(){
         //console.log(contact);
         for (var i=0; i<contact.length; i++){
             //"<div id='contact_"+fake_contact.id+"'style='display:none; height: 130px; line-height:130px; text-align:center; background-color:"+'#'+Math.floor(Math.random()*16777215).toString(16)+"' onclick='fill_fake_contact(\""+fake_contact.phone+"\")'>"+fake_contact.abbr+"</div>"
-            $('#user-contact-list').append("<li class='ui-screen-hidden'><a href='#' onclick='fill_contact(\""+contact[i].contactphone+"\")'>"+contact[i].contactname+"</a></li>");
+            $('#user-contact-list').append("<li class='ui-screen-hidden'><a href='#send-page' onclick='fill_contact(\""+contact[i].contactphone+"\")'>"+contact[i].contactname+"</a></li>");
         }
     })
 }
@@ -266,7 +267,7 @@ function pullContact(){
 function createContact(contactName, contactPhone){
     $.post("https://shhnote-dev.herokuapp.com/db/create-new-contact",{number: localStorage["phone"], contactName: contactName, contactPhone: contactPhone}, function(data) {
         console.log ( data );
-        $('#user-contact-list').append("<li class='ui-screen-hidden'><a href='#' onclick='fill_contact(\""+contactPhone+"\")'>"+contactName+"</a></li>");
+        $('#user-contact-list').append("<li class='ui-screen-hidden'><a href='#send-page' onclick='fill_contact(\""+contactPhone+"\")'>"+contactName+"</a></li>");
         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
     });
 }
