@@ -59,12 +59,12 @@
         !-->
         </div>
         <div id="inbox-panel">
-            <div style="float:left; width:20%;"><a href="#" id="inbox-panel-flag" class="ui-btn ui-btn-icon-left" data-icon="custom">Flag</a></div>
-            <div style="float:left; width:20%; height:1px"></div>
-            <div style="float:left; width:20%; text-align: center;"><a href="#" id="inbox-panel-dismiss" class="ui-btn ui-btn-icon-left" data-icon="custom">Dismiss</a></div>
+            <div style="float:left; width:25%;"><a href="#" id="inbox-panel-flag" class="ui-btn">Flag</a></div>
             <div style="float:left; width:10%; height:1px"></div>
-            <div style="float:left; width:15%;"><a href="#" id="inbox-panel-like" class="ui-btn ui-btn-icon-right" data-icon="custom">Like</a></div>
-            <div style="float:left; width:15%;"><a href="#" id="inbox-panel-dislike" class="ui-btn ui-btn-icon-right" data-icon="custom">Dislike</a></div>
+            <div style="float:left; width:35%; text-align: center;"><a href="#" id="inbox-panel-dismiss" class="ui-btn" data-mini="true">Dismiss</a></div>
+            <div style="float:left; width:10%; height:1px"></div>
+            <div style="float:left; width:10%;"><a href="#" id="inbox-panel-like" style="padding-bottom: 11.2px; padding-top: 11.2px; height: 20px; width: 100%" class="ui-btn ui-btn-icon-notext" data-mini="true" data-icon="custom">&nbsp;</a></div>
+            <div style="float:left; width:10%;"><a href="#" id="inbox-panel-dislike" style="padding-bottom: 11.2px; padding-top: 11.2px; height: 20px; width: 100%" class="ui-btn ui-btn-icon-notext" data-mini="true" data-icon="custom">&nbsp;</a></div>
         </div>
         
         <form class="ui-filterable">
@@ -84,17 +84,13 @@
 </div><!-- /page chat-page -->
 
 <!-- Start of second page: #contact-page -->
-<div data-role="page" id="contact-page" data-theme="a">
+<div data-role="page" id="send-page" data-theme="a">
 
     <div data-role="header">
-        <h1>Two</h1>
+        <h1>Send Message</h1>
     </div><!-- /header -->
 
     <div role="main" class="ui-content">
-        <h2>Two</h2>
-        <p>I have an id of "two" on my page container. I'm the second page container in this multi-page template.</p>
-        <p>Notice that the theme is different for this page because we've added a few <code>data-theme</code> swatch assigments here to show off how flexible it is. You can add any content or widget to these pages, but we're keeping these simple.</p>
-        <p><a href="#chat-page" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Back to page "one"</a></p>
         <form role="form" method="post">
             <div class="form-group">
                 <b>Contact</b>
@@ -105,13 +101,6 @@
             <button type="submit" class="btn btn-lg btn-sample">Send</button>
         </form>
     </div><!-- /content -->
-
-    <div data-role="footer" class="nav-glyphish-example" data-theme="b" data-position="fixed">
-        <div data-role="navbar" class="nav-glyphish-example" data-grid="b"><ul>
-            <li><a href="#chat-page" id="chat-nav" data-icon="custom">Chat</a></li><li><a href="#contact-page" id="contact-nav-active" data-icon="custom">Contact</a></li><li><a href="#popup" id="gear-nav" data-icon="custom">Setting</a></li>
-        </ul>
-        </div>
-    </div><!-- /footer -->
 </div><!-- /page contact-page -->
 
 <!-- Start of third page: #login-page -->
