@@ -14,7 +14,7 @@
     <link rel="manifest" href="./Content/manifest.json">
     <link rel="stylesheet" href="./Scripts/jquerymobile/demos/css/themes/default/jquery.mobile-1.4.5.min.css">
     <link rel="stylesheet" type="text/css" href="./slick/slick.css"/>
-    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="./indexV4.css">
     <script src="./Scripts/jquerymobile/demos/js/jquery.js"></script>
     <script src="./Scripts/jquerymobile/demos/js/jquery.mobile-1.4.5.min.js"></script>
@@ -52,19 +52,11 @@
         <div class="inbox">
             <h1>Inbox</h1>
             <p id="tmess" style="text-align: center;">You have no new messages.</p>
-        <!--    <a href="#" data-role="button" data-inline='true' data-mini='true' data-icon="alert" style='background-color:red; text-shadow: none'>Report</a>
-            <a href="#" data-role="button" data-inline='true' data-mini='true' data-icon="delete">Dismiss</a>
-            <a href="#" data-role="button" data-inline='true' data-mini='true' data-icon="arrow-u">Like</a>
-            <a href="#" data-role="button" data-inline='true' data-mini='true' data-icon="arrow-d">Dislike</a>
-        !-->
         </div>
         <div id="inbox-panel">
-            <div style="float:left; width:25%;"><a href="#" id="inbox-panel-flag" class="ui-btn">Flag</a></div>
-            <div style="float:left; width:10%; height:1px"></div>
-            <div style="float:left; width:35%; text-align: center;"><a href="#" id="inbox-panel-dismiss" class="ui-btn" data-mini="true">Dismiss</a></div>
-            <div style="float:left; width:10%; height:1px"></div>
-            <div style="float:left; width:10%;"><a href="#" id="inbox-panel-like" style="padding-bottom: 11.2px; padding-top: 11.2px; height: 20px; width: 100%" class="ui-btn ui-btn-icon-notext" data-mini="true" data-icon="custom">&nbsp;</a></div>
-            <div style="float:left; width:10%;"><a href="#" id="inbox-panel-dislike" style="padding-bottom: 11.2px; padding-top: 11.2px; height: 20px; width: 100%" class="ui-btn ui-btn-icon-notext" data-mini="true" data-icon="custom">&nbsp;</a></div>
+            <div style="float:left; width:40%;"><a href="#" id="inbox-panel-flag" class="ui-btn">Block</a></div>
+            <div style="float:left; width:20%; height:1px"></div>
+            <div style="float:left; width:40%; text-align: center;"><a href="#" id="inbox-panel-dismiss" class="ui-btn">Next Message</a></div>
         </div>
         
         <form class="ui-filterable">
@@ -76,11 +68,6 @@
         <p><a href="#create-contact" class="ui-btn ui-shadow ui-corner-all" data-rel="dialog" data-transition="pop">Create New Contact</a></p>
 
     </div><!-- /content -->
-
-    <div data-role="footer" data-position="fixed">
-        <!--<div class="slider responsive">
-        </div>!-->
-    </div><!-- /footer -->
 </div><!-- /page chat-page -->
 
 <!-- Start of second page: #contact-page -->
@@ -123,7 +110,6 @@
         </div>
     </div><!-- /content -->
 
-    <div data-role="footer" data-position="fixed"></div><!-- /footer -->
 </div><!-- /page login-page -->
 
 <!-- Start of third page: #verify-page -->
@@ -145,7 +131,6 @@
         </div>
     </div><!-- /content -->
 
-    <div data-role="footer" data-position="fixed"></div><!-- /footer -->
 </div><!-- /page login-page -->
 
 <!-- Start of fifth page: #popup -->
@@ -162,13 +147,10 @@
             <label for="newContactPhone">Contact Phone:</label>
             <input type="tel" data-clear-btn="true" name="newContactPhone" maxlength="14" id="newContactPhone" value="">
         </form>
-        </br>
+        <br />
         <button class="ui-btn ui-icon-cloud ui-shadow ui-corner-all ui-btn-icon-left" onclick="createContact($('#newContactName').val().toString(),$('#newContactPhone').val().toString())">Add</button>
         <p><a href="#char-page" data-rel="back" class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-left">Cancel</a></p>
     </div><!-- /content -->
-
-    <div data-role="footer">
-    </div><!-- /footer -->
 </div><!-- /page popup -->
 
 <!-- Start of sixth page: #sign-up-page -->
@@ -187,7 +169,6 @@
         <p></p>
     </div><!-- /content -->
 
-    <div data-role="footer" data-position="fixed"></div><!-- /footer -->
 </div><!-- /page login-page -->
 
 </body>

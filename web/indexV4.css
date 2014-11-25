@@ -57,17 +57,6 @@
     background-size: 24px 24px;
 }
 
-.button-cir{
-    display:block;
-    width:100px;
-    height:100px;
-    border-radius:50px;
-    font-size:20px;
-    color:#fff;
-    line-height:100px;
-    text-align:center;
-    background:#000;
-}
 
 .contacts{
     height: 200px;
@@ -77,7 +66,6 @@
 }
 .inbox{
     height: 50%;
-    font-family: 'Indie Flower', cursive;
 }
 
 .inbox-panel{
@@ -91,3 +79,23 @@ inbox.p{
     padding-bottom: 20px;
 }
 
+.ui-page{
+   background-image: url(./ink_back.png);
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: 100% 100%;
+   background-color: white;
+}
+.ui-page .ui-btn{
+  font-family: 'Lobster Two', cursive;
+}
+.ui-page .ui-header {
+    background: transparent !important;
+}
+.ui-page .ui-footer {
+    background: transparent !important;
+}
+
+*{
+   font-family: 'Lobster Two', cursive;
+}
