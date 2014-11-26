@@ -66,10 +66,10 @@ $(document).ready(function(){
         event.preventDefault();
     });
     phone_number_regex();
-    get_fake_contact();
     pullContact();
     pullMessages();
     checkFlag();
+    refreshAuto();
 });
 
 function phone_number_regex(){
@@ -110,6 +110,13 @@ function phone_number_regex(){
             $phone.val('');
         }
     });
+}
+
+function refreshAuto(){
+    var t=setTimeout(function(){
+        pullMessages();
+        refreshAuto();
+    },1000);
 }
 
 function ini_contact(){
