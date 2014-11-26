@@ -24,7 +24,7 @@ $(document).ready(function(){
         localStorage.removeItem("phone");
         localStorage.removeItem("verifycode");
         var t=setTimeout(function(){
-            $( ":mobile-pagecontainer" ).pagecontainer( "change", "#login-page" );
+            $( ":mobile-pagecontainer" ).pagecontainer( "change", "#intro-page" );
         },10);
     } else {
         if (localStorage["verifycode"] == undefined) {
@@ -69,6 +69,7 @@ $(document).ready(function(){
     get_fake_contact();
     pullContact();
     pullMessages();
+    checkFlag();
 });
 
 function phone_number_regex(){
@@ -183,7 +184,8 @@ function fill_fake_contact(num){
     $('#number').val(num);
 }
 
-function fill_contact(num){
+function fill_contact(num,name){
+    $('#contactname').val(name);
     $('#number').val(num);
 }
 
@@ -241,15 +243,21 @@ function save_to_database(num, receiver, message) {
         console.log ( data );
     });
 }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+var message;    
+var currentMessageNumber;
 function pullMessages(){        
     $.post("https://shhnote-dev.herokuapp.com/db/get-unread-message",{number: localStorage["phone"]}, function(data) {
-        var message = JSON.parse(data);
+        message = JSON.parse(data);
         if (message.length!=0) {
             var text=document.getElementById('tmess');
+            currentMessageNumber=0;
             text.innerHTML=message[0].mtext;
             $("#inbox-panel-flag").click(function(){
-                blockContact(message[0].mid)
+                blockContact(message[0].mid);
+                nextMessage(message[0].mid);
+            });
+            $("#inbox-panel-dismiss").click(function(){
+                nextMessage(message[0].mid);
             });
         }
     });
@@ -262,7 +270,7 @@ function pullContact(){
         //console.log(contact);
         for (var i=0; i<contact.length; i++){
             //"<div id='contact_"+fake_contact.id+"'style='display:none; height: 130px; line-height:130px; text-align:center; background-color:"+'#'+Math.floor(Math.random()*16777215).toString(16)+"' onclick='fill_fake_contact(\""+fake_contact.phone+"\")'>"+fake_contact.abbr+"</div>"
-            $('#user-contact-list').append("<li class='ui-screen-hidden'><a href='#send-page' onclick='fill_contact(\""+contact[i].contactphone+"\")'>"+contact[i].contactname+"</a></li>");
+            $('#user-contact-list').append("<li class='ui-screen-hidden'><a href='#send-page' onclick='fill_contact(\""+contact[i].contactphone+"\",\""+contact[i].contactname+"\")'>"+contact[i].contactname+"</a></li>");
         }
     })
 }
@@ -270,7 +278,7 @@ function pullContact(){
 function createContact(contactName, contactPhone){
     $.post("https://shhnote-dev.herokuapp.com/db/create-new-contact",{number: localStorage["phone"], contactName: contactName, contactPhone: contactPhone}, function(data) {
         console.log ( data );
-        $('#user-contact-list').append("<li class='ui-screen-hidden'><a href='#send-page' onclick='fill_contact(\""+contactPhone+"\")'>"+contactName+"</a></li>");
+        $('#user-contact-list').append("<li class='ui-screen-hidden'><a href='#send-page' onclick='fill_contact(\""+contactPhone+"\",\""+contactName+"\")'>"+contactName+"</a></li>");
         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
     })
 }
@@ -284,8 +292,36 @@ function blockContact(MID){
 function checkFlag() {
     $.post("http://shhnote-dev.herokuapp.com/db/checkFlag",{number: localStorage["phone"]}, function(data){
         console.log(data);
-        if (data.toString().localeCompare('666')) {
+        if (!(data.toString().localeCompare('666'))) {
             $(":mobile-pagecontainer").pagecontainer("change", "#you-are-blocked");
+        }
+    })
+}
+
+function nextMessage(MID){
+    $.post("http://shhnote-dev.herokuapp.com/db/nextMessage",{MID: MID}, function(data){
+        if (!(data.toString().localeCompare('0'))) {
+            currentMessageNumber = currentMessageNumber+1;
+            if (currentMessageNumber<message.length) {
+                var text=document.getElementById('tmess');
+                text.innerHTML=message[currentMessageNumber].mtext;
+                $( "#inbox-panel-dismiss").unbind( "click" );
+                $( "#inbox-panel-flag").unbind( "click" );
+                $("#inbox-panel-flag").click(function(){
+                    blockContact(message[currentMessageNumber].mid);
+                    nextMessage(message[currentMessageNumber].mid);
+                });
+                $("#inbox-panel-dismiss").click(function(){
+                    nextMessage(message[currentMessageNumber].mid);
+                });
+                $("#inbox-panel-flag").removeClass("redButton");
+            } else {
+                var text=document.getElementById('tmess');
+                text.innerHTML="You have no new messages.";
+                $( "#inbox-panel-dismiss").unbind( "click" );
+                $( "#inbox-panel-flag").unbind( "click" );
+                $("#inbox-panel-flag").removeClass("redButton");
+            }
         }
     })
 }
