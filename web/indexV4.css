@@ -96,6 +96,10 @@ inbox.p{
     background: transparent !important;
 }
 
+.redButton {
+    background-color: red !important;
+}
+
 *{
    font-family: 'Lobster Two', cursive;
 }
