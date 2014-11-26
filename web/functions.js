@@ -248,6 +248,9 @@ function pullMessages(){
         if (message.length!=0) {
             var text=document.getElementById('tmess');
             text.innerHTML=message[0].mtext;
+            $("#inbox-panel-flag").click(function(){
+                blockContact(message[0].mid)
+            });
         }
     });
 }           
@@ -269,5 +272,22 @@ function createContact(contactName, contactPhone){
         console.log ( data );
         $('#user-contact-list').append("<li class='ui-screen-hidden'><a href='#send-page' onclick='fill_contact(\""+contactPhone+"\")'>"+contactName+"</a></li>");
         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
-    });
+    })
 }
+
+function blockContact(MID){
+    $.post("http://shhnote-dev.herokuapp.com/db/blockContact",{MID: MID}, function(data){
+        $('#inbox-panel-flag').addClass("redButton");
+    })
+}
+
+function checkFlag() {
+    $.post("http://shhnote-dev.herokuapp.com/db/checkFlag",{number: localStorage["phone"]}, function(data){
+        console.log(data);
+        if (data.toString().localeCompare('666')) {
+            $(":mobile-pagecontainer").pagecontainer("change", "#you-are-blocked");
+        }
+    })
+}
+//ownernumber
+//checkFlag
