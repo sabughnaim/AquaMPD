@@ -80,10 +80,9 @@ inbox.p{
 }
 
 .ui-page{
-   background-image: url(./ink_back.png);
+   background-image: url(./tree_back.png);
    background-repeat: no-repeat;
    background-position: center;
-   background-size: 100% 100%;
    background-color: white;
 }
 .ui-page .ui-btn{
