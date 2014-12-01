@@ -90,6 +90,7 @@ inbox.p{
 }
 .ui-page .ui-header {
     background: transparent !important;
+    font-size: 40px;
 }
 .ui-page .ui-footer {
     background: transparent !important;
