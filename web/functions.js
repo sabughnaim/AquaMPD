@@ -118,6 +118,7 @@ function phone_number_regex(){
 function refreshAuto(){
     var t=setTimeout(function(){
         pullMessages();
+        checkFlag();
         refreshAuto();
     },1000);
 }
