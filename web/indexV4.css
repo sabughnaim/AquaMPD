@@ -90,7 +90,7 @@ inbox.p{
 }
 .ui-page .ui-header {
     background: transparent !important;
-    font-size: 40px;
+    font-size: 20px;
 }
 .ui-page .ui-footer {
     background: transparent !important;
@@ -102,4 +102,8 @@ inbox.p{
 
 *{
    font-family: 'Lobster Two', cursive;
+   text-shadow: none;
+}
+.ui-content{
+    background: rgba(255,255,255,0.8);
 }
