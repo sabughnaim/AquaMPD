@@ -45,7 +45,10 @@ $(document).ready(function(){
                         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#login-page" );
                     },10);
                 } else {
-                    $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
+                    if (localStorage['block']==true)
+                        $( ":mobile-pagecontainer" ).pagecontainer( "change", "#you-are-blocked" );
+                    else
+                        $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
                     localStorage["phone"]=num;
                     localStorage["verifycode"]=code;
                 }
@@ -300,6 +303,7 @@ function checkFlag() {
     $.post("http://shhnote-dev.herokuapp.com/db/checkFlag",{number: localStorage["phone"]}, function(data){
         console.log(data);
         if (!(data.toString().localeCompare('666'))) {
+            localStorage['block']=true;
             $(":mobile-pagecontainer").pagecontainer("change", "#you-are-blocked");
         }
     })
