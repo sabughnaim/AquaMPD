@@ -46,7 +46,6 @@ $(document).ready(function(){
                         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#login-page" );
                     },10);
                 } else {
-                    console.log("block="+localStorage['block']);
                     if (!(localStorage['block'].toString().localeCompare('true'))){
                         var t=setTimeout(function(){
                             $( ":mobile-pagecontainer" ).pagecontainer( "change", "#you-are-blocked" );
@@ -250,6 +249,10 @@ function check_verifyCode(num,code) {
             }
             localStorage["phone"]=num;
             localStorage["verifycode"]=code;
+            pullContact();
+            pullMessages();
+            checkFlag();
+            refreshAuto();
         }
     });
 }
