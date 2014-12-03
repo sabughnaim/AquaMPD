@@ -20,6 +20,7 @@ var load_contact= new Array();
 var fake_contact_numner=0;
 
 $(document).ready(function(){
+    
     if (localStorage["phone"] == undefined) {
         localStorage.removeItem("phone");
         localStorage.removeItem("verifycode");
@@ -47,10 +48,15 @@ $(document).ready(function(){
                 } else {
                     if (localStorage['block']==true)
                         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#you-are-blocked" );
-                    else
+                    else {
                         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
-                    localStorage["phone"]=num;
-                    localStorage["verifycode"]=code;
+                        localStorage["phone"]=num;
+                        localStorage["verifycode"]=code;
+                        pullContact();
+                        pullMessages();
+                        checkFlag();
+                        refreshAuto();
+                    }
                 }
             });
         }
@@ -69,10 +75,7 @@ $(document).ready(function(){
         event.preventDefault();
     });
     phone_number_regex();
-    pullContact();
-    pullMessages();
-    checkFlag();
-    refreshAuto();
+    
 });
 
 function phone_number_regex(){
@@ -235,7 +238,10 @@ function check_verifyCode(num,code) {
             $('#verifyCode').val("");
             $('#popup-verify-code-incorrect').popup("open");
         } else {
-            $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
+            if (localStorage['block']==true)
+                $( ":mobile-pagecontainer" ).pagecontainer( "change", "#you-are-blocked" );
+            else
+                $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
             localStorage["phone"]=num;
             localStorage["verifycode"]=code;
         }
