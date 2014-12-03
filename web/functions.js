@@ -24,6 +24,7 @@ $(document).ready(function(){
     if (localStorage["phone"] == undefined) {
         localStorage.removeItem("phone");
         localStorage.removeItem("verifycode");
+        localStorage['block']='false';
         var t=setTimeout(function(){
             $( ":mobile-pagecontainer" ).pagecontainer( "change", "#intro-page" );
         },10);
@@ -248,13 +249,14 @@ function check_verifyCode(num,code) {
                 $( ":mobile-pagecontainer" ).pagecontainer( "change", "#you-are-blocked" );
             else{
                 $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
+                pullContact();
+                pullMessages();
+                checkFlag();
+                refreshAuto();
             }
             localStorage["phone"]=num;
             localStorage["verifycode"]=code;
-            pullContact();
-            pullMessages();
-            checkFlag();
-            refreshAuto();
+            
         }
     });
 }
