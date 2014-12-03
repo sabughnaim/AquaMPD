@@ -46,13 +46,18 @@ $(document).ready(function(){
                         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#login-page" );
                     },10);
                 } else {
-                    if (localStorage['block']){
-                        $( ":mobile-pagecontainer" ).pagecontainer( "change", "#you-are-blocked" );
+                    console.log("block="+localStorage['block']);
+                    if (!(localStorage['block'].toString().localeCompare('true'))){
+                        var t=setTimeout(function(){
+                            $( ":mobile-pagecontainer" ).pagecontainer( "change", "#you-are-blocked" );
+                        },10);
                         checkFlag();
+                        refreshAuto();
                     }
                     else {
-                        
-                        $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
+                        var t=setTimeout(function(){
+                            $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
+                        },10);
                         localStorage["phone"]=num;
                         localStorage["verifycode"]=code;
                         pullContact();
@@ -238,7 +243,7 @@ function check_verifyCode(num,code) {
             $('#verifyCode').val("");
             $('#popup-verify-code-incorrect').popup("open");
         } else {
-            if (localStorage['block']==true)
+            if (!(localStorage['block'].toString().localeCompare('true')))
                 $( ":mobile-pagecontainer" ).pagecontainer( "change", "#you-are-blocked" );
             else{
                 $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
@@ -310,12 +315,11 @@ function blockContact(MID){
 
 function checkFlag() {
     $.post("http://shhnote-dev.herokuapp.com/db/checkFlag",{number: localStorage["phone"]}, function(data){
-        console.log(data);
         if (!(data.toString().localeCompare('666'))) {
-            localStorage['block']=true;
+            localStorage['block']='true';
             $(":mobile-pagecontainer").pagecontainer("change", "#you-are-blocked");
         } else {
-            localStorage['block']=false;
+            localStorage['block']='false';
         }
     })
 }
