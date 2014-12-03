@@ -48,6 +48,7 @@ $(document).ready(function(){
                 } else {
                     if (localStorage['block']){
                         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#you-are-blocked" );
+                        checkFlag();
                     }
                     else {
                         
@@ -313,6 +314,8 @@ function checkFlag() {
         if (!(data.toString().localeCompare('666'))) {
             localStorage['block']=true;
             $(":mobile-pagecontainer").pagecontainer("change", "#you-are-blocked");
+        } else {
+            localStorage['block']=false;
         }
     })
 }
