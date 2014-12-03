@@ -46,9 +46,11 @@ $(document).ready(function(){
                         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#login-page" );
                     },10);
                 } else {
-                    if (localStorage['block']==true)
+                    if (localStorage['block']){
                         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#you-are-blocked" );
+                    }
                     else {
+                        
                         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
                         localStorage["phone"]=num;
                         localStorage["verifycode"]=code;
@@ -69,7 +71,6 @@ $(document).ready(function(){
         //    $('button').text("Done");
         //});
         $.post("https://shhnote-dev.herokuapp.com/db/save-message",{number: localStorage["phone"], receiver: num, message: text }, function(data) {
-            console.log ( data );
             $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
         });
         event.preventDefault();
@@ -82,7 +83,6 @@ function phone_number_regex(){
     $('#phone, #newContactPhone').keydown(function (e) {
         var key = e.charCode || e.keyCode || 0;
         $phone = $(this);
-        console.log($phone);
         // Auto-format- do not expose the mask as the user begins to type
         if (key !== 8 && key !== 9) {
             if ($phone.val().length === 4) {
@@ -159,12 +159,11 @@ function ini_contact(){
 
 function get_fake_contact(){
     $.post("https://shhnote-dev.herokuapp.com/fake_contact_number", function(data){
-        console.log ( data );
+
         fake_contact_number = parseInt(data);
         for (i=0; i<fake_contact_number; i++) {
             load_contact[i]=false;
             $.post("https://shhnote-dev.herokuapp.com/fake_contact",{contact_id:i},function(data){
-                console.log ( data );
                 var fake_contact = JSON.parse(data);
                 $('.responsive').append("<div id='contact_"+fake_contact.id+"'style='display:none; height: 130px; line-height:130px; text-align:center; background-color:"+'#'+Math.floor(Math.random()*16777215).toString(16)+"' onclick='fill_fake_contact(\""+fake_contact.phone+"\")'>"+fake_contact.abbr+"</div>");
                 load_contact[fake_contact.id]=true;
@@ -240,8 +239,9 @@ function check_verifyCode(num,code) {
         } else {
             if (localStorage['block']==true)
                 $( ":mobile-pagecontainer" ).pagecontainer( "change", "#you-are-blocked" );
-            else
+            else{
                 $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
+            }
             localStorage["phone"]=num;
             localStorage["verifycode"]=code;
         }
@@ -296,6 +296,7 @@ function createContact(contactName, contactPhone){
     $.post("https://shhnote-dev.herokuapp.com/db/create-new-contact",{number: localStorage["phone"], contactName: contactName, contactPhone: contactPhone}, function(data) {
         console.log ( data );
         $('#user-contact-list').append("<li class='ui-screen-hidden'><a href='#send-page' onclick='fill_contact(\""+contactPhone+"\",\""+contactName+"\")'>"+contactName+"</a></li>");
+        console.log('oncreatecontact');
         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
     })
 }
