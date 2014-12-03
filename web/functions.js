@@ -20,7 +20,7 @@ var load_contact= new Array();
 var fake_contact_numner=0;
 
 $(document).ready(function(){
-    
+    $( ":mobile-pagecontainer" ).pagecontainer( "change", "#initial-page" );
     if (localStorage["phone"] == undefined) {
         localStorage.removeItem("phone");
         localStorage.removeItem("verifycode");
