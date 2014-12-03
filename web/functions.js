@@ -75,13 +75,15 @@ $(document).ready(function(){
         //$.post("https://shhnote.herokuapp.com/send-message",{message: text, number: num}, function(data) {
         //    $('button').text("Done");
         //});
+        $('#contactname').val("");   //remove the current contact name
+        $('#number').val("");   //remove the current number
+        $('#message').val("");  //remove the current message
+        $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
         $.post("https://shhnote-dev.herokuapp.com/db/save-message",{number: localStorage["phone"], receiver: num, message: text }, function(data) {
-            $( ":mobile-pagecontainer" ).pagecontainer( "change", "#chat-page" );
         });
         event.preventDefault();
     });
     phone_number_regex();
-    
 });
 
 function phone_number_regex(){
