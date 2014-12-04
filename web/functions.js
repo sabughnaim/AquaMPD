@@ -277,6 +277,7 @@ function pullMessages(){
     $.post("https://shhnote-dev.herokuapp.com/db/get-unread-message",{number: localStorage["phone"]}, function(data) {
         message = JSON.parse(data);
         $("#inbox-panel-flag").removeClass("redButton");
+        //$( "#inbox-panel-dismiss").text( "Next" );
         if (message.length!=0) {
             var text=document.getElementById('tmess');
             text.innerHTML=message[0].mtext;
@@ -320,8 +321,8 @@ function createContact(contactName, contactPhone){
 }
 
 function blockContact(MID){
+    $('#inbox-panel-flag').addClass("redButton");
     $.post("http://shhnote-dev.herokuapp.com/db/blockContact",{MID: MID}, function(data){
-        $('#inbox-panel-flag').addClass("redButton");
     })
 }
 
@@ -337,6 +338,9 @@ function checkFlag() {
 }
 
 function nextMessage(MID){
+    $( "#inbox-panel-dismiss").unbind( "click" );
+    //$( "#inbox-panel-dismiss").text( "Loading" );
+    $( "#inbox-panel-flag").unbind( "click" );
     $.post("http://shhnote-dev.herokuapp.com/db/nextMessage",{MID: MID}, function(data){
     })
 }
