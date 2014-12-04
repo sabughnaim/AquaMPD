@@ -273,21 +273,27 @@ function save_to_database(num, receiver, message) {
     });
 }
 var message;    
-var currentMessageNumber;
 function pullMessages(){        
     $.post("https://shhnote-dev.herokuapp.com/db/get-unread-message",{number: localStorage["phone"]}, function(data) {
         message = JSON.parse(data);
+        $("#inbox-panel-flag").removeClass("redButton");
         if (message.length!=0) {
             var text=document.getElementById('tmess');
-            currentMessageNumber=0;
             text.innerHTML=message[0].mtext;
             $("#inbox-panel-flag").click(function(){
                 blockContact(message[0].mid);
                 nextMessage(message[0].mid);
+                pullMessages();
             });
             $("#inbox-panel-dismiss").click(function(){
                 nextMessage(message[0].mid);
+                pullMessages();
             });
+        } else {
+            var text=document.getElementById('tmess');
+            text.innerHTML="You have no new messages.";
+            $( "#inbox-panel-dismiss").unbind( "click" );
+            $( "#inbox-panel-flag").unbind( "click" );
         }
     });
 }           
@@ -332,29 +338,6 @@ function checkFlag() {
 
 function nextMessage(MID){
     $.post("http://shhnote-dev.herokuapp.com/db/nextMessage",{MID: MID}, function(data){
-        if (!(data.toString().localeCompare('0'))) {
-            currentMessageNumber = currentMessageNumber+1;
-            if (currentMessageNumber<message.length) {
-                var text=document.getElementById('tmess');
-                text.innerHTML=message[currentMessageNumber].mtext;
-                $( "#inbox-panel-dismiss").unbind( "click" );
-                $( "#inbox-panel-flag").unbind( "click" );
-                $("#inbox-panel-flag").click(function(){
-                    blockContact(message[currentMessageNumber].mid);
-                    nextMessage(message[currentMessageNumber].mid);
-                });
-                $("#inbox-panel-dismiss").click(function(){
-                    nextMessage(message[currentMessageNumber].mid);
-                });
-                $("#inbox-panel-flag").removeClass("redButton");
-            } else {
-                var text=document.getElementById('tmess');
-                text.innerHTML="You have no new messages.";
-                $( "#inbox-panel-dismiss").unbind( "click" );
-                $( "#inbox-panel-flag").unbind( "click" );
-                $("#inbox-panel-flag").removeClass("redButton");
-            }
-        }
     })
 }
 //ownernumber
